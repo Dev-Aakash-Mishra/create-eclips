@@ -1,0 +1,44 @@
+{
+  "name": "eclips-app",
+  "version": "1.0.0",
+  "private": true,
+  "main": "handler/main.js",
+  "description": "Desktop application built with Eclips (Electron + Python)",
+  "author": "",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "build": "python backend/helper/build.py",
+    "build:python": "pyinstaller --onefile backend/helper/runtime.py --name app --distpath dist --paths backend",
+    "build:electron": "electron-builder",
+    "start:built": "release/win-unpacked/eclips-app.exe -d"
+  },
+  "build": {
+    "appId": "com.eclips.app",
+    "productName": "Eclips App",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "handler/**/*",
+      "frontend/**/*",
+      "backend/**/*",
+      "dist/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "dist/app.exe",
+        "to": "app.exe"
+      }
+    ],
+    "win": {
+      "icon": "icon.ico",
+      "target": "nsis"
+    }
+  },
+  "devDependencies": {
+    "electron": "^32.0.0",
+    "electron-builder": "^25.0.0"
+  }
+}

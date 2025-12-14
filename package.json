@@ -1,0 +1,20 @@
+{
+  "name": "create-eclips",
+  "version": "2.0.0",
+  "description": "Electron + Python desktop app generator with JSON-RPC",
+  "bin": {
+    "create-eclips": "bin/create.js"
+  },
+  "keywords": [
+    "electron",
+    "python",
+    "desktop",
+    "rpc",
+    "template",
+    "boilerplate"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
