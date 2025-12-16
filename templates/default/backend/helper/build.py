@@ -4,6 +4,10 @@ import subprocess
 import sys
 import json
 
+def python_exe_exists():
+    exe = os.path.join(DIST, "app.exe")
+    return os.path.exists(exe)
+
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 BACKEND = os.path.join(ROOT, "backend")
 DIST = os.path.join(ROOT, "dist")
@@ -25,14 +29,16 @@ DEFAULT_HIDDEN_IMPORTS = [
 def log(msg):
     print(f"[BUILD] {msg}")
 
-def clean():
+def clean(full=True):
     log("Cleaning previous builds")
 
-    shutil.rmtree(DIST, ignore_errors=True)
     shutil.rmtree(RELEASE, ignore_errors=True)
     shutil.rmtree(os.path.join(BACKEND, "logs"), ignore_errors=True)
 
-    os.makedirs(DIST, exist_ok=True)
+    if full:
+        shutil.rmtree(DIST, ignore_errors=True)
+        os.makedirs(DIST, exist_ok=True)
+
 
 def load_hidden_imports():
     user_imports = []
@@ -95,10 +101,16 @@ def build_electron():
     log("Electron build complete")
 
 def main():
-    log("Starting full production build")
+    log("Starting production build")
 
-    clean()
-    build_python()
+    if python_exe_exists():
+        log("app.exe already exists → skipping Python build")
+        clean(full=False)
+    else:
+        log("app.exe not found → building Python runtime")
+        clean(full=True)
+        build_python()
+
     build_electron()
 
     log("BUILD SUCCESS 🎉")

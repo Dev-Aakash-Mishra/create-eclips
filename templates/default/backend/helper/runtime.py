@@ -3,6 +3,22 @@ import json
 import traceback
 import importlib.util
 import os
+import atexit
+import logging
+
+def on_exit():
+    logging.info("[PYTHON] atexit triggered")
+    sys.stdout.flush()
+
+atexit.register(on_exit)
+
+def handle_sigterm(signum, frame):
+    logging.info("[PYTHON] SIGTERM received")
+    sys.stdout.flush()
+    sys.exit(0)
+
+signal.signal(signal.SIGTERM, handle_sigterm)
+signal.signal(signal.SIGINT, handle_sigterm)
 
 def get_backend_dir():
     if getattr(sys, "frozen", False):
