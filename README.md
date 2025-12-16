@@ -106,6 +106,10 @@ npm run build
 - Output in `/release`
 
 ---
+## 📋 Logs
+- Electron logs - on terminal
+- Python logs - on  `backend/logs/backend.log`
+- Fronted logs -  on Console of devtools
 
 ## 🔒 Design Principles
 
@@ -134,43 +138,14 @@ If you want **predictability**, it is.
 ## 📄 Documentation
 
 - `dev.md` (inside generated app): **authoritative development rules**
-- This README: **framework overview only**
-
-Framework internals are intentionally minimal.
 
 ---
 
 ## 📦 Package Info
 
 - npm package: `create-eclips`
-- Command: `npm create eclips`
+- Command: `npm create eclips@latest myapp`
 - License: MIT
 
 ---
-
-## 🧭 Roadmap
-
-- macOS notarization
-- Linux AppImage support
-- Plugin system
-- Typed RPC schema
-
----
-
-## ⚠️ Philosophy (Important)
-
-Eclips favors:
-> **clarity over convenience**  
-> **constraints over chaos**  
-> **predictability over cleverness**
-
-If you follow the rules, Eclips will not surprise you.
-
----
-
-## 🏁 Final Note
-
-Eclips is not a framework you “tinker” with.
-
-It’s a framework you **build on top of**.
 
