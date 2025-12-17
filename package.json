@@ -1,6 +1,6 @@
 {
   "name": "create-eclips",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Electron + Python desktop app generator with JSON-RPC",
   "bin": {
     "create-eclips": "bin/create.js"
