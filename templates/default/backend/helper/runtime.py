@@ -5,6 +5,7 @@ import importlib.util
 import os
 import atexit
 import logging
+import signal
 
 def on_exit():
     logging.info("[PYTHON] atexit triggered")

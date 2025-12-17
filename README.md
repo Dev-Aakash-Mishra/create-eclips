@@ -106,6 +106,20 @@ npm run build
 - Output in `/release`
 
 ---
+
+## 💾 Persistent Data Storage
+
+Eclips apps can write persistent data to platform-specific directories using the built-in storage helper:
+
+```python
+from helper.storage import DATA_DIR
+
+
+# Create custom paths
+custom_file = DATA_DIR / "custom.txt"
+```
+
+---
 ## 📋 Logs
 - Electron logs - on terminal
 - Python logs - on  `backend/logs/backend.log`

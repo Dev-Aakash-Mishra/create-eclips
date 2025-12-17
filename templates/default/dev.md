@@ -47,6 +47,7 @@ project/
 │     ├─ __init__.py          
 │     ├─ runtime.py          # RPC engine (DO NOT TOUCH)
 │     ├─ logs.py             # Logging system (USE THIS)
+│     ├─ storage.py          # Persistent data storage (USE THIS)
 │     └─ build.py            # Build pipeline (DO NOT MODIFY)
 │
 ├─ frontend/
@@ -131,6 +132,35 @@ METHODS = {
 
 ✔ Use `logger` for ALL logging  
 ✔ Return only JSON-safe values  
+
+---
+
+## 💾 Persistent Data Storage
+
+Eclips provides a built-in helper for writing persistent data to platform-specific directories.
+
+### Using the storage helper
+
+```python
+from helper.storage import DATA_DIR
+
+# Create custom paths
+def save_config(config):
+    config_file = DATA_DIR / "config.json"
+    with open(config_file, 'w') as f:
+        json.dump(config, f)
+```
+
+
+### Best practices
+
+✔ Use `DATA_DIR` for all persistent data  
+✔ The directory is created automatically  
+✔ Works identically in dev and prod modes  
+✔ Platform-specific paths are handled for you  
+
+❌ Do NOT hardcode paths  
+❌ Do NOT write to the app installation directory  
 
 ---
 
